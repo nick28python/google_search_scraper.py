@@ -34,3 +34,15 @@ This project uses **Selenium** in **headless mode** to perform automated Google 
 
 ## Output Example
 
+📌 Top Google Search Results:
+Web Scraping With Python: A Beginner’s Guide
+Web Scraping using Selenium and Python
+Beautiful Soup vs Selenium: Which to Use
+Top Python Libraries for Web Scraping
+Selenium WebDriver Basics for Beginners
+A Simple Google Scraper with Python
+Why Use Headless Browsers in Automation
+Python Tutorial: Web Scraping with Selenium
+Handling Dynamic Content in Web Scraping
+Best Practices for Web Scraping Google Search
+

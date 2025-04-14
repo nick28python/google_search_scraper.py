@@ -1,0 +1,45 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+import time
+
+# Chrome Options (Headless Mode + User-Agent)
+options = Options()
+options.add_argument("--headless")  # No GUI
+options.add_argument("start-maximized")
+options.add_argument("disable-infobars")
+options.add_argument("--disable-blink-features=AutomationControlled")
+options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36")
+
+# Chrome Driver Setup
+driver = webdriver.Chrome(options=options)
+
+# Open Google
+driver.get("https://www.google.com")
+time.sleep(2)  # Small delay
+
+# Find search box
+search_box = driver.find_element(By.NAME, "q")
+search_box.send_keys("Web Scraping with Python")
+search_box.send_keys(Keys.RETURN)
+time.sleep(3)  # Wait for results to load
+
+# Scroll Down (Load all results)
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+time.sleep(2)
+
+# Extract Search Results
+try:
+    results = driver.find_elements(By.CSS_SELECTOR, "h3")
+    if not results:
+        print("⚠ No search results found! Try again.")
+    else:
+        print("\n📌 Top Google Search Results:")
+        for result in results[:10]:  # Only top 10 results
+            print(result.text)
+except Exception as e:
+    print(f"❌ Error: {e}")
+
+# Close Browser
+driver.quit()
